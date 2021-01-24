@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :user
   resources :user_registrations
-  get '/hoges', to: 'hoges#index'
+  resources :hoges, only: %i[index]
 end
