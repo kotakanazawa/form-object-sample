@@ -1,12 +1,12 @@
 class UserRegistrationsController < ApplicationController
   def new
-    @user = User.new
+    @user_registration_form = UserRegistrationForm.new
   end
 
   def create
-    @user = User.new(user_params)
+    @user_registration_form = UserRegistrationForm.new(user_params)
 
-    if @user.save
+    if @user_registration_form.save
       redirect_to root_path, notice: "登録しました"
     else
       render :new
@@ -16,7 +16,6 @@ class UserRegistrationsController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :terms_of_service)
-      # params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user_registration_form).permit(:email, :password, :password_confirmation, :terms_of_service)
     end
 end
